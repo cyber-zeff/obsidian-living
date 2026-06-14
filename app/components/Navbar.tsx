@@ -1,5 +1,46 @@
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function Navbar() {
+    const ref = useRef<HTMLButtonElement | null>(null);
+
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    // stronger + snappier spring = more "magnetic resistance"
+    const springX = useSpring(x, {
+        stiffness: 350,
+        damping: 22
+    });
+
+    const springY = useSpring(y, {
+        stiffness: 350,
+        damping: 22
+    });
+
+    function handleMouseMove(e: React.MouseEvent<HTMLButtonElement>) {
+        if (!ref.current) return;
+
+        const rect = ref.current.getBoundingClientRect();
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const offsetX = e.clientX - rect.left - centerX;
+        const offsetY = e.clientY - rect.top - centerY;
+
+        // 🔥 stronger magnetic force (key change)
+        const strength = 0.45;
+
+        x.set(offsetX * strength);
+        y.set(offsetY * strength);
+    }
+
+    function handleMouseLeave() {
+        x.set(0);
+        y.set(0);
+    }
+
     return (
         <nav className="py-5 flex items-center justify-around priColor">
             <div className="hFont text-2xl">Obsidian Living</div>
@@ -68,7 +109,22 @@ export default function Navbar() {
                 </ul>
             </div>
             <div>
-                <button className="hFont bg-[#8b5ce9] text-white px-4 py-2 rounded-md hover:bg-[#6e41c9]">Contact</button>
+                <motion.button
+                ref={ref}
+                className="hFont bg-[#8b5ce9] text-white px-4 py-2 rounded-md"
+
+                style={{
+                    x: springX,
+                    y: springY,
+                }}
+
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+
+                whileTap={{ scale: 0.95 }}
+            >
+                Contact
+            </motion.button>
             </div>
         </nav>
     )
