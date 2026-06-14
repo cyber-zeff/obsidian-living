@@ -2,7 +2,7 @@
 export default function Navbar() {
     return (
         <nav className="py-5 flex items-center justify-around priColor">
-            <div className="hFont">Obsidian Living</div>
+            <div className="hFont text-2xl">Obsidian Living</div>
             <div>
                 <ul className="flex gap-5">
                     <li>
@@ -67,7 +67,9 @@ export default function Navbar() {
                     </li>
                 </ul>
             </div>
-            <div>Contact</div>
+            <div>
+                <button className="hFont bg-[#8b5ce9] text-white px-4 py-2 rounded-md hover:bg-[#6e41c9]">Contact</button>
+            </div>
         </nav>
     )
 }
