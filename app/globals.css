@@ -1,25 +1,40 @@
-@import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Sansation:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sansation:wght@700&display=swap');
+@import "tailwindcss";
 
 :root {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /* variables */
+  --background: #000000;
+  --foreground: #f1f1f1;
+  --primary: #6e41c9;
+  --secondary: #8b5ce9;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #111112;
-    --foreground: #f1f1f1;
-    --primary: #6e41c9;
-    --secondary: #8b5ce9;
-  }
+html,
+body {
+  cursor: url("/cursor.png") 16 16, auto;
+}
+
+
+a:hover,
+button:hover,
+input:hover,
+textarea:hover,
+select:hover,
+[role="button"]:hover {
+  cursor: url("/cursorHover.png") 8 8, pointer !important;
+}
+.priColor {
+  color: var(--foreground);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  /* color: var(--foreground); */
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
