@@ -1,134 +1,159 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+
+const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Buy", href: "/" },
+    { name: "About", href: "/" },
+];
 
 export default function Navbar() {
-    const ref = useRef<HTMLButtonElement | null>(null);
-
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    // stronger + snappier spring = more "magnetic resistance"
-    const springX = useSpring(x, {
-        stiffness: 350,
-        damping: 22
-    });
-
-    const springY = useSpring(y, {
-        stiffness: 350,
-        damping: 22
-    });
-
-    function handleMouseMove(e: React.MouseEvent<HTMLButtonElement>) {
-        if (!ref.current) return;
-
-        const rect = ref.current.getBoundingClientRect();
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const offsetX = e.clientX - rect.left - centerX;
-        const offsetY = e.clientY - rect.top - centerY;
-
-        // 🔥 stronger magnetic force (key change)
-        const strength = 0.45;
-
-        x.set(offsetX * strength);
-        y.set(offsetY * strength);
-    }
-
-    function handleMouseLeave() {
-        x.set(0);
-        y.set(0);
-    }
-
     return (
-        <nav className="py-5 flex items-center justify-around priColor">
-            <div className="hFont text-2xl">
-                <Image width={45} height={45} src="/obsidian.png" alt="Obsidian Image" />
-            </div>
-            <div>
-                <ul className="flex gap-5">
-                    <li>
-                        <a
-                            href="/"
-                            className="group relative overflow-hidden px-2 py-1 inline-flex items-center justify-center before:absolute before:inset-0
-                            before:bg-[#8b5ce9] before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:content-[''] hover:before:scale-x-100">
-                            <span className="relative z-10 h-[1.5em] overflow-hidden">
-                                {/* Current text */}
-                                <span
-                                    className="block transition-transform duration-300 group-hover:translate-y-full">
-                                    Home
-                                </span>
-
-                                {/* Incoming text */}
-                                <span
-                                    className="absolute left-0 top-0 block -translate-y-full transition-transform duration-300 group-hover:translate-y-0" >
-                                    Home
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="/"
-                            className="group relative overflow-hidden px-2 py-1 inline-flex items-center justify-center before:absolute before:inset-0
-                            before:bg-[#8b5ce9] before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:content-[''] hover:before:scale-x-100">
-                            <span className="relative z-10 h-[1.5em] overflow-hidden">
-                                {/* Current text */}
-                                <span
-                                    className="block transition-transform duration-300 group-hover:translate-y-full">
-                                    Buy
-                                </span>
-
-                                {/* Incoming text */}
-                                <span
-                                    className="absolute left-0 top-0 block -translate-y-full transition-transform duration-300 group-hover:translate-y-0" >
-                                    Buy
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="/"
-                            className="group relative overflow-hidden px-2 py-1 inline-flex items-center justify-center before:absolute before:inset-0
-                            before:bg-[#8b5ce9] before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:content-[''] hover:before:scale-x-100">
-                            <span className="relative z-10 h-[1.5em] overflow-hidden">
-                                {/* Current text */}
-                                <span
-                                    className="block transition-transform duration-300 group-hover:translate-y-full">
-                                    About
-                                </span>
-
-                                {/* Incoming text */}
-                                <span
-                                    className="absolute left-0 top-0 block -translate-y-full transition-transform duration-300 group-hover:translate-y-0" >
-                                    About
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <motion.button
-                ref={ref}
-                className="hFont bg-[#8b5ce9] text-white px-4 py-2 rounded-md"
-
-                style={{
-                    x: springX,
-                    y: springY,
+        <motion.nav
+            initial={{
+                opacity: 0,
+                y: -25,
+            }}
+            animate={{
+                opacity: 1,
+                y: 0,
+            }}
+            transition={{
+                duration: 1.2,
+                ease: [0.22, 1, 0.36, 1],
+            }}
+            className="
+                absolute
+                top-0
+                left-0
+                right-0
+                z-50
+                px-12
+                py-8
+                flex
+                items-center
+                justify-between
+                text-white
+            "
+        >
+            {/* Logo */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                    delay: 0.3,
+                    duration: 1,
                 }}
+            >
+                <Image
+                    width={42}
+                    height={42}
+                    src="/obsidian.png"
+                    alt="Obsidian"
+                    priority
+                    className="object-contain"
+                />
+            </motion.div>
 
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
+            {/* Nav Links */}
+            <ul className="flex items-center gap-12">
+                {navLinks.map((item, index) => (
+                    <motion.li
+                        key={item.name}
+                        initial={{
+                            opacity: 0,
+                            y: -10,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                        }}
+                        transition={{
+                            delay: 0.2 + index * 0.1,
+                            duration: 0.8,
+                        }}
+                    >
+                        <a
+                            href={item.href}
+                            className="
+                                group
+                                relative
+                                uppercase
+                                tracking-[0.25em]
+                                text-[11px]
+                                font-medium
+                                text-white/55
+                                transition-colors
+                                duration-500
+                                hover:text-white
+                            "
+                        >
+                            {item.name}
 
-                whileTap={{ scale: 0.95 }}
+                            <span
+                                className="
+                                    absolute
+                                    left-0
+                                    -bottom-2
+                                    h-px
+                                    w-0
+                                    bg-white
+                                    transition-all
+                                    duration-500
+                                    ease-out
+                                    group-hover:w-full
+                                "
+                            />
+                        </a>
+                    </motion.li>
+                ))}
+            </ul>
+
+            {/* Contact */}
+            <motion.button
+                initial={{
+                    opacity: 0,
+                    y: -10,
+                }}
+                animate={{
+                    opacity: 1,
+                    y: 0,
+                }}
+                transition={{
+                    delay: 0.6,
+                    duration: 0.8,
+                }}
+                whileHover={{
+                    scale: 1.02,
+                }}
+                whileTap={{
+                    scale: 0.98,
+                }}
+                className="
+                    relative
+                    overflow-hidden
+                    border
+                    border-white/15
+                    px-6
+                    py-3
+                    uppercase
+                    tracking-[0.25em]
+                    text-[11px]
+                    font-medium
+                    text-white
+                    backdrop-blur-md
+                    bg-white/2
+                    transition-all
+                    duration-500
+                    hover:bg-white
+                    hover:text-black
+                    hover:border-white
+                "
             >
                 Contact
             </motion.button>
-            </div>
-        </nav>
-    )
+        </motion.nav>
+    );
 }
