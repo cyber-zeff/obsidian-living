@@ -115,7 +115,8 @@ export default function Navbar() {
                 </ul>
 
                 {/* Desktop Contact */}
-                <motion.button
+                <motion.a
+                    href="/#contact"
                     initial={{
                         opacity: 0,
                         y: -10,
@@ -157,7 +158,7 @@ export default function Navbar() {
                     "
                 >
                     Contact
-                </motion.button>
+                </motion.a>
 
                 {/* Mobile Hamburger */}
                 <button
@@ -259,7 +260,8 @@ export default function Navbar() {
                             ))}
                         </ul>
 
-                        <motion.button
+                        <motion.a
+                            href="/#contact"
                             initial={{
                                 opacity: 0,
                             }}
@@ -287,7 +289,7 @@ export default function Navbar() {
                             "
                         >
                             Contact
-                        </motion.button>
+                        </motion.a>
                     </motion.div>
                 )}
             </AnimatePresence>
