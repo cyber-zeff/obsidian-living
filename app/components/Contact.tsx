@@ -8,7 +8,7 @@ export default function Contact() {
             
             {/* Ambient glow */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="h-[500px] w-[500px] rounded-full bg-white/[0.02] blur-[140px]" />
+                <div className="h-125 w-125 rounded-full bg-white/2 blur-[140px]" />
             </div>
 
             {/* Background word */}
@@ -28,7 +28,7 @@ export default function Contact() {
                     lg:text-[14rem]
                     font-light
                     tracking-[0.2em]
-                    text-white/[0.03]
+                    text-white/3
                     select-none
                     pointer-events-none
                 "
