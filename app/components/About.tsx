@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
     return (
-        <section className="relative bg-[#090909] text-white overflow-hidden py-28 sm:py-36 md:py-52">
+        <section id="about" className="relative bg-[#090909] text-white overflow-hidden py-28 sm:py-36 md:py-52">
 
             {/* BACKGROUND WORD (slow float, not scroll math) */}
             <motion.h2
