@@ -96,7 +96,8 @@ export default function Footer() {
                             architecture.
                         </p>
 
-                        <button
+                        <a
+                            href="/#contact"
                             className="
                                 border
                                 border-white/15
@@ -115,7 +116,7 @@ export default function Footer() {
                             "
                         >
                             Contact
-                        </button>
+                        </a>
                     </div>
                 </motion.div>
 
