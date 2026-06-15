@@ -7,7 +7,7 @@ import Image from "next/image";
 const navLinks = [
     { name: "Home", href: "/" },
     { name: "Buy", href: "/Buy" },
-    { name: "About", href: "/" },
+    { name: "About", href: "/#about" },
 ];
 
 export default function Navbar() {
@@ -28,8 +28,6 @@ export default function Navbar() {
                 ease: [0.22, 1, 0.36, 1],
             }}
             className="
-                sticky
-                bg-[#090909]
                 absolute
                 top-0
                 left-0
