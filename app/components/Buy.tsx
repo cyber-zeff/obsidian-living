@@ -54,7 +54,8 @@ export default function PropertiesPreview() {
                         </h2>
                     </div>
 
-                    <motion.button
+                    <motion.a
+                        href="/Buy"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         className="
@@ -73,7 +74,7 @@ export default function PropertiesPreview() {
                         "
                     >
                         View More
-                    </motion.button>
+                    </motion.a>
                 </motion.div>
 
                 {/* GRID */}
