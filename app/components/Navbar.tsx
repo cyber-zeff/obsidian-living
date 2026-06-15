@@ -1,4 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 
 export default function Navbar() {
@@ -43,7 +44,9 @@ export default function Navbar() {
 
     return (
         <nav className="py-5 flex items-center justify-around priColor">
-            <div className="hFont text-2xl">Obsidian Living</div>
+            <div className="hFont text-2xl">
+                <Image width={45} height={45} src="/obsidian.png" alt="Obsidian Image" />
+            </div>
             <div>
                 <ul className="flex gap-5">
                     <li>
