@@ -86,7 +86,7 @@ export default function BuyPage() {
 
                 {/* glow */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="h-[500px] w-[500px] bg-white/[0.02] blur-[140px] rounded-full" />
+                    <div className="h-125 w-125 bg-white/2 blur-[140px] rounded-full" />
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
@@ -176,11 +176,11 @@ export default function BuyPage() {
                                 group
                                 border
                                 border-white/10
-                                bg-white/[0.01]
+                                bg-white/1
                                 overflow-hidden
                             "
                             >
-                                <div className="relative h-[300px] overflow-hidden">
+                                <div className="relative h-75 overflow-hidden">
                                     <Image
                                         src={item.image}
                                         alt={item.title}
@@ -194,7 +194,7 @@ export default function BuyPage() {
                                     "
                                     />
 
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                                    <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
                                 </div>
 
                                 <div className="p-6 space-y-2">
