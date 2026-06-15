@@ -4,29 +4,22 @@ import { motion } from "framer-motion";
 
 export default function About() {
     return (
-        <section
-            className="
-                relative
-                bg-[#090909]
-                text-white
-                overflow-hidden
-                py-40
-                md:py-56
-            "
-        >
-            {/* Background Word */}
+        <section className="relative bg-[#090909] text-white overflow-hidden py-28 sm:py-36 md:py-52">
+
+            {/* BACKGROUND WORD (slow float, not scroll math) */}
             <motion.h2
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 1.5 }}
+                initial={{ opacity: 0, scale: 1.05 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false, amount: 0.4 }}
+                transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                 className="
                     absolute
                     inset-0
                     flex
                     items-center
                     justify-center
-                    text-[5rem]
+                    text-[4rem]
+                    sm:text-[7rem]
                     md:text-[10rem]
                     lg:text-[14rem]
                     font-light
@@ -40,168 +33,92 @@ export default function About() {
             </motion.h2>
 
             <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
-                {/* Heading */}
-                <motion.div
-                    initial={{
-                        opacity: 0,
-                        y: 80,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    viewport={{
-                        once: true,
-                        amount: 0.4,
-                    }}
-                    transition={{
-                        duration: 1.2,
-                        ease: [0.22, 1, 0.36, 1],
-                    }}
-                >
-                    <p
-                        className="
-                            uppercase
-                            tracking-[0.35em]
-                            text-white/40
-                            text-xs
-                        "
-                    >
-                        About
-                    </p>
 
-                    <h2
-                        className="
-                            mt-6
-                            text-4xl
-                            md:text-6xl
-                            lg:text-7xl
-                            font-light
-                            leading-[1.05]
-                            max-w-4xl
-                        "
-                    >
-                        Spaces designed around
-                        light, proportion,
-                        and timeless living.
-                    </h2>
-                </motion.div>
-
-                {/* Growing Line */}
-                <motion.div
-                    initial={{
-                        scaleY: 0,
-                    }}
-                    whileInView={{
-                        scaleY: 1,
-                    }}
-                    viewport={{
-                        once: true,
-                    }}
-                    transition={{
-                        duration: 1.5,
-                        delay: 0.4,
-                    }}
-                    style={{
-                        transformOrigin: "top",
-                    }}
-                    className="
-                        mt-16
-                        h-32
-                        w-px
-                        bg-white/15
-                    "
-                />
-
-                {/* Description */}
+                {/* ABOUT LABEL */}
                 <motion.p
-                    initial={{
-                        opacity: 0,
-                        y: 30,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    viewport={{
-                        once: true,
-                    }}
-                    transition={{
-                        duration: 1,
-                        delay: 0.3,
-                    }}
-                    className="
-                        mt-12
-                        max-w-2xl
-                        text-white/50
-                        leading-relaxed
-                        text-base
-                        md:text-lg
-                    "
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.6 }}
+                    transition={{ duration: 0.8 }}
+                    className="uppercase tracking-[0.35em] text-white/40 text-xs"
                 >
-                    Obsidian represents a philosophy of refined living.
-                    Every residence is crafted with careful attention
-                    to material, atmosphere, and architectural clarity,
-                    creating environments that remain beautiful for decades.
+                    About
                 </motion.p>
 
-                {/* Stats */}
-                <div
+                {/* MAIN HEADING */}
+                <motion.h2
+                    initial={{ opacity: 0, y: 80 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     className="
-                        mt-24
-                        grid
-                        grid-cols-3
-                        gap-8
-                        md:gap-16
+                        mt-6
+                        text-3xl
+                        sm:text-4xl
+                        md:text-6xl
+                        lg:text-7xl
+                        font-light
+                        leading-[1.1]
+                        max-w-4xl
                     "
                 >
+                    Spaces shaped by light,
+                    proportion, and quiet
+                    architectural intention.
+                </motion.h2>
+
+                {/* LINE */}
+                <motion.div
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 1 }}
+                    style={{ transformOrigin: "top" }}
+                    className="mt-14 h-28 w-px bg-white/15"
+                />
+
+                {/* DESCRIPTION */}
+                <motion.p
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.6 }}
+                    transition={{ duration: 0.9, delay: 0.1 }}
+                    className="mt-10 max-w-xl text-white/50 leading-relaxed text-sm sm:text-base"
+                >
+                    Obsidian is a study in restraint — where material,
+                    space, and light are composed to create homes that
+                    feel timeless rather than designed.
+                </motion.p>
+
+                {/* STATS (STAGGER = KEY DIFFERENCE) */}
+                <div className="mt-20 grid grid-cols-3 gap-6 md:gap-16 text-center md:text-left">
+
                     {[
                         ["12+", "Projects"],
                         ["50+", "Residences"],
                         ["8", "Awards"],
-                    ].map(([number, label], index) => (
+                    ].map(([num, label], i) => (
                         <motion.div
                             key={label}
-                            initial={{
-                                opacity: 0,
-                                y: 40,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            viewport={{
-                                once: true,
-                            }}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false, amount: 0.4 }}
                             transition={{
-                                duration: 1,
-                                delay: 0.2 * index,
+                                duration: 0.9,
+                                delay: i * 0.15,
+                                ease: [0.22, 1, 0.36, 1],
                             }}
                         >
-                            <h3
-                                className="
-                                    text-3xl
-                                    md:text-5xl
-                                    font-light
-                                "
-                            >
-                                {number}
-                            </h3>
-
-                            <p
-                                className="
-                                    mt-3
-                                    uppercase
-                                    tracking-[0.25em]
-                                    text-[10px]
-                                    text-white/40
-                                "
-                            >
+                            <div className="text-2xl sm:text-4xl font-light">
+                                {num}
+                            </div>
+                            <div className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-white/40">
                                 {label}
-                            </p>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
+
             </div>
         </section>
     );
