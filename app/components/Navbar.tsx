@@ -172,21 +172,21 @@ export default function Navbar() {
                     aria-label="Toggle Menu"
                 >
                     <span
-                        className={`h-[2px] w-6 bg-white transition-all duration-300 ${
+                        className={`h-0.5 w-6 bg-white transition-all duration-300 ${
                             isOpen
-                                ? "rotate-45 translate-y-[8px]"
+                                ? "rotate-45 translate-y-2"
                                 : ""
                         }`}
                     />
                     <span
-                        className={`h-[2px] w-6 bg-white transition-all duration-300 ${
+                        className={`h-0.5 w-6 bg-white transition-all duration-300 ${
                             isOpen ? "opacity-0" : ""
                         }`}
                     />
                     <span
-                        className={`h-[2px] w-6 bg-white transition-all duration-300 ${
+                        className={`h-0.5 w-6 bg-white transition-all duration-300 ${
                             isOpen
-                                ? "-rotate-45 -translate-y-[8px]"
+                                ? "-rotate-45 -translate-y-2"
                                 : ""
                         }`}
                     />
