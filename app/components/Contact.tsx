@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
     return (
-        <section className="relative min-h-screen bg-[#090909] text-white overflow-hidden flex items-center">
+        <section id="contact" className="relative min-h-screen bg-[#090909] text-white overflow-hidden flex items-center">
             
             {/* Ambient glow */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
