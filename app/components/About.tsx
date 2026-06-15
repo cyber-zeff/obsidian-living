@@ -24,7 +24,7 @@ export default function About() {
                     lg:text-[14rem]
                     font-light
                     tracking-[0.2em]
-                    text-white/[0.03]
+                    text-white/3
                     select-none
                     pointer-events-none
                 "
