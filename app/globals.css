@@ -28,6 +28,12 @@ select:hover,
 [role="button"]:hover {
   cursor: url("/cursorHover.png") 8 8, pointer !important;
 }
+
+::selection {
+  background: var(--primary);
+  color: var(--foreground);
+}
+
 .priColor {
   color: var(--foreground);
 }
